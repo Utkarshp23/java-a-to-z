@@ -13,19 +13,26 @@ public class FunctionalInterface1 {
         System.out.println("This is a method in the functional interface.");
     }
 
-    public static void main(String[] args) {
-        // Using lambda expression to implement the functional interface
-        MyFunctionalInterface myFunc = () -> System.out.println("Hello from the functional interface class!");
+    //behavior parameterization
+    public void methodWithParameter(MyFunctionalInterface myFunc) {
         myFunc.myMethod();
+    }
 
-        FunctionalInterface1 obj = new FunctionalInterface1();
+    public static void main(String[] args) {
+        //1.
+        // Using lambda expression to implement the functional interface
+        // MyFunctionalInterface myFunc = () -> System.out.println("Hello from the functional interface class!");
+        // myFunc.myMethod();
 
-        // Using method reference to refer to a method in the class
-        MyFunctionalInterface myfunc2 = obj::methodInClass;
-        myfunc2.myMethod();
+        //2.
+        // FunctionalInterface1 obj = new FunctionalInterface1();
+        // MyFunctionalInterface myfunc2 = obj::methodInClass;
+        // myfunc2.myMethod();
 
+        //3.
         // Behavior parameterization
-        
+        FunctionalInterface1 obj2 = new FunctionalInterface1();
+        obj2.methodWithParameter(() -> System.out.println("Hello from Behavior parameterization!"));
     }
 
 }
